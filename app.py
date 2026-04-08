@@ -275,40 +275,40 @@ workout_plans = {
     }
 }
 
-# Indian Meal Plans
+# Indian Meal Plans with Macros (protein, carbs, fats in grams)
 indian_meal_plans = {
     'non_veg': {
         'name': 'Indian Non-Vegetarian Plan',
         'days': [
             {'name': 'Day 1', 'meals': [
-                {'name': 'Poha (Rice Flakes)', 'calories': 280, 'allergens': []},
-                {'name': 'Dal Tadka with Rice', 'calories': 450, 'allergens': []},
-                {'name': 'Roasted Chana', 'calories': 120, 'allergens': []},
-                {'name': 'Chicken Curry with Roti', 'calories': 480, 'allergens': []}
+                {'name': 'Poha (Rice Flakes)', 'calories': 280, 'protein': 5, 'carbs': 52, 'fats': 4, 'allergens': []},
+                {'name': 'Dal Tadka with Rice', 'calories': 450, 'protein': 18, 'carbs': 65, 'fats': 12, 'allergens': []},
+                {'name': 'Roasted Chana', 'calories': 120, 'protein': 6, 'carbs': 18, 'fats': 3, 'allergens': []},
+                {'name': 'Chicken Curry with Roti', 'calories': 480, 'protein': 32, 'carbs': 45, 'fats': 18, 'allergens': []}
             ], 'total': 1330},
             {'name': 'Day 2', 'meals': [
-                {'name': 'Upma with Vegetables', 'calories': 260, 'allergens': []},
-                {'name': 'Vegetable Khichdi', 'calories': 400, 'allergens': []},
-                {'name': 'Banana', 'calories': 90, 'allergens': []},
-                {'name': 'Fish Curry with Rice', 'calories': 420, 'allergens': ['fish']}
+                {'name': 'Upma with Vegetables', 'calories': 260, 'protein': 8, 'carbs': 42, 'fats': 6, 'allergens': []},
+                {'name': 'Vegetable Khichdi', 'calories': 400, 'protein': 14, 'carbs': 60, 'fats': 10, 'allergens': []},
+                {'name': 'Banana', 'calories': 90, 'protein': 1, 'carbs': 23, 'fats': 0, 'allergens': []},
+                {'name': 'Fish Curry with Rice', 'calories': 420, 'protein': 28, 'carbs': 50, 'fats': 12, 'allergens': ['fish']}
             ], 'total': 1170},
             {'name': 'Day 3', 'meals': [
-                {'name': 'Idli Sambar', 'calories': 250, 'allergens': []},
-                {'name': 'Egg Curry with Toast', 'calories': 350, 'allergens': ['eggs', 'wheat']},
-                {'name': 'Buttermilk', 'calories': 60, 'allergens': ['dairy']},
-                {'name': 'Roti Sabzi', 'calories': 350, 'allergens': ['wheat']}
+                {'name': 'Idli Sambar', 'calories': 250, 'protein': 10, 'carbs': 42, 'fats': 4, 'allergens': []},
+                {'name': 'Egg Curry with Toast', 'calories': 350, 'protein': 20, 'carbs': 30, 'fats': 16, 'allergens': ['eggs', 'wheat']},
+                {'name': 'Buttermilk', 'calories': 60, 'protein': 3, 'carbs': 8, 'fats': 2, 'allergens': ['dairy']},
+                {'name': 'Roti Sabzi', 'calories': 350, 'protein': 8, 'carbs': 55, 'fats': 10, 'allergens': ['wheat']}
             ], 'total': 1010},
             {'name': 'Day 4', 'meals': [
-                {'name': 'Moong Dal Cheela', 'calories': 240, 'allergens': ['wheat']},
-                {'name': 'Chicken Biryani', 'calories': 480, 'allergens': []},
-                {'name': 'Cucumber Salad', 'calories': 40, 'allergens': []},
-                {'name': 'Grilled Chicken with Salad', 'calories': 420, 'allergens': []}
+                {'name': 'Moong Dal Cheela', 'calories': 240, 'protein': 12, 'carbs': 35, 'fats': 6, 'allergens': ['wheat']},
+                {'name': 'Chicken Biryani', 'calories': 480, 'protein': 25, 'carbs': 55, 'fats': 18, 'allergens': []},
+                {'name': 'Cucumber Salad', 'calories': 40, 'protein': 1, 'carbs': 6, 'fats': 0, 'allergens': []},
+                {'name': 'Grilled Chicken with Salad', 'calories': 420, 'protein': 38, 'carbs': 15, 'fats': 22, 'allergens': []}
             ], 'total': 1180},
             {'name': 'Day 5', 'meals': [
-                {'name': 'Aloo Paratha with Curd', 'calories': 380, 'allergens': ['wheat', 'dairy']},
-                {'name': 'Rajma Chawal', 'calories': 450, 'allergens': []},
-                {'name': 'Sprouts', 'calories': 80, 'allergens': []},
-                {'name': 'Fish Tikka with Salad', 'calories': 400, 'allergens': ['fish']}
+                {'name': 'Aloo Paratha with Curd', 'calories': 380, 'protein': 12, 'carbs': 55, 'fats': 14, 'allergens': ['wheat', 'dairy']},
+                {'name': 'Rajma Chawal', 'calories': 450, 'protein': 18, 'carbs': 70, 'fats': 10, 'allergens': []},
+                {'name': 'Sprouts', 'calories': 80, 'protein': 5, 'carbs': 12, 'fats': 1, 'allergens': []},
+                {'name': 'Fish Tikka with Salad', 'calories': 400, 'protein': 30, 'carbs': 18, 'fats': 22, 'allergens': ['fish']}
             ], 'total': 1310}
         ]
     },
@@ -316,34 +316,34 @@ indian_meal_plans = {
         'name': 'Indian Vegetarian Plan',
         'days': [
             {'name': 'Day 1', 'meals': [
-                {'name': 'Poha', 'calories': 260, 'allergens': []},
-                {'name': 'Dal Tadka with Rice', 'calories': 420, 'allergens': []},
-                {'name': 'Roasted Peanuts', 'calories': 100, 'allergens': ['peanuts']},
-                {'name': 'Paneer Bhurji with Roti', 'calories': 450, 'allergens': ['dairy', 'wheat']}
+                {'name': 'Poha', 'calories': 260, 'protein': 5, 'carbs': 48, 'fats': 4, 'allergens': []},
+                {'name': 'Dal Tadka with Rice', 'calories': 420, 'protein': 16, 'carbs': 62, 'fats': 10, 'allergens': []},
+                {'name': 'Roasted Peanuts', 'calories': 100, 'protein': 4, 'carbs': 8, 'fats': 6, 'allergens': ['peanuts']},
+                {'name': 'Paneer Bhurji with Roti', 'calories': 450, 'protein': 22, 'carbs': 40, 'fats': 22, 'allergens': ['dairy', 'wheat']}
             ], 'total': 1230},
             {'name': 'Day 2', 'meals': [
-                {'name': 'Upma', 'calories': 240, 'allergens': []},
-                {'name': 'Mixed Veg Khichdi', 'calories': 380, 'allergens': []},
-                {'name': 'Fruit (Apple)', 'calories': 80, 'allergens': []},
-                {'name': 'Roti Sabzi', 'calories': 320, 'allergens': ['wheat']}
+                {'name': 'Upma', 'calories': 240, 'protein': 7, 'carbs': 38, 'fats': 6, 'allergens': []},
+                {'name': 'Mixed Veg Khichdi', 'calories': 380, 'protein': 12, 'carbs': 58, 'fats': 10, 'allergens': []},
+                {'name': 'Fruit (Apple)', 'calories': 80, 'protein': 0, 'carbs': 20, 'fats': 0, 'allergens': []},
+                {'name': 'Roti Sabzi', 'calories': 320, 'protein': 8, 'carbs': 50, 'fats': 10, 'allergens': ['wheat']}
             ], 'total': 1020},
             {'name': 'Day 3', 'meals': [
-                {'name': 'Besan Chilla', 'calories': 250, 'allergens': ['wheat']},
-                {'name': 'Rajma Chawal', 'calories': 440, 'allergens': []},
-                {'name': 'Lassi (Sweet)', 'calories': 150, 'allergens': ['dairy']},
-                {'name': 'Methi Thepla with Curd', 'calories': 380, 'allergens': ['wheat', 'dairy']}
+                {'name': 'Besan Chilla', 'calories': 250, 'protein': 14, 'carbs': 30, 'fats': 8, 'allergens': ['wheat']},
+                {'name': 'Rajma Chawal', 'calories': 440, 'protein': 16, 'carbs': 68, 'fats': 10, 'allergens': []},
+                {'name': 'Lassi (Sweet)', 'calories': 150, 'protein': 6, 'carbs': 22, 'fats': 4, 'allergens': ['dairy']},
+                {'name': 'Methi Thepla with Curd', 'calories': 380, 'protein': 14, 'carbs': 52, 'fats': 14, 'allergens': ['wheat', 'dairy']}
             ], 'total': 1220},
             {'name': 'Day 4', 'meals': [
-                {'name': 'Idli Sambar', 'calories': 230, 'allergens': []},
-                {'name': 'Chole Bhature', 'calories': 480, 'allergens': ['wheat']},
-                {'name': 'Onion Salad', 'calories': 30, 'allergens': []},
-                {'name': 'Mixed Veg Curry with Roti', 'calories': 340, 'allergens': ['wheat']}
+                {'name': 'Idli Sambar', 'calories': 230, 'protein': 10, 'carbs': 40, 'fats': 4, 'allergens': []},
+                {'name': 'Chole Bhature', 'calories': 480, 'protein': 14, 'carbs': 65, 'fats': 18, 'allergens': ['wheat']},
+                {'name': 'Onion Salad', 'calories': 30, 'protein': 1, 'carbs': 6, 'fats': 0, 'allergens': []},
+                {'name': 'Mixed Veg Curry with Roti', 'calories': 340, 'protein': 10, 'carbs': 52, 'fats': 10, 'allergens': ['wheat']}
             ], 'total': 1080},
             {'name': 'Day 5', 'meals': [
-                {'name': 'Aloo Paratha with Curd', 'calories': 360, 'allergens': ['wheat', 'dairy']},
-                {'name': 'Vegetable Pulao', 'calories': 400, 'allergens': []},
-                {'name': 'Buttermilk', 'calories': 60, 'allergens': ['dairy']},
-                {'name': 'Dal Fry with Rice', 'calories': 380, 'allergens': []}
+                {'name': 'Aloo Paratha with Curd', 'calories': 360, 'protein': 10, 'carbs': 52, 'fats': 14, 'allergens': ['wheat', 'dairy']},
+                {'name': 'Vegetable Pulao', 'calories': 400, 'protein': 10, 'carbs': 65, 'fats': 12, 'allergens': []},
+                {'name': 'Buttermilk', 'calories': 60, 'protein': 3, 'carbs': 8, 'fats': 2, 'allergens': ['dairy']},
+                {'name': 'Dal Fry with Rice', 'calories': 380, 'protein': 14, 'carbs': 58, 'fats': 10, 'allergens': []}
             ], 'total': 1200}
         ]
     },
@@ -351,34 +351,34 @@ indian_meal_plans = {
         'name': 'Indian Vegan Plan',
         'days': [
             {'name': 'Day 1', 'meals': [
-                {'name': 'Poha (no milk)', 'calories': 250, 'allergens': []},
-                {'name': 'Dal Tadka with Rice', 'calories': 420, 'allergens': []},
-                {'name': 'Roasted Chana', 'calories': 120, 'allergens': []},
-                {'name': 'Sabzi with Roti', 'calories': 300, 'allergens': ['wheat']}
+                {'name': 'Poha (no milk)', 'calories': 250, 'protein': 5, 'carbs': 50, 'fats': 3, 'allergens': []},
+                {'name': 'Dal Tadka with Rice', 'calories': 420, 'protein': 16, 'carbs': 62, 'fats': 10, 'allergens': []},
+                {'name': 'Roasted Chana', 'calories': 120, 'protein': 6, 'carbs': 18, 'fats': 3, 'allergens': []},
+                {'name': 'Sabzi with Roti', 'calories': 300, 'protein': 8, 'carbs': 48, 'fats': 8, 'allergens': ['wheat']}
             ], 'total': 1090},
             {'name': 'Day 2', 'meals': [
-                {'name': 'Upma', 'calories': 240, 'allergens': []},
-                {'name': 'Vegetable Khichdi', 'calories': 380, 'allergens': []},
-                {'name': 'Banana', 'calories': 90, 'allergens': []},
-                {'name': 'Chole (no yogurt)', 'calories': 340, 'allergens': []}
+                {'name': 'Upma', 'calories': 240, 'protein': 7, 'carbs': 38, 'fats': 6, 'allergens': []},
+                {'name': 'Vegetable Khichdi', 'calories': 380, 'protein': 12, 'carbs': 58, 'fats': 10, 'allergens': []},
+                {'name': 'Banana', 'calories': 90, 'protein': 1, 'carbs': 23, 'fats': 0, 'allergens': []},
+                {'name': 'Chole (no yogurt)', 'calories': 340, 'protein': 14, 'carbs': 50, 'fats': 8, 'allergens': []}
             ], 'total': 1050},
             {'name': 'Day 3', 'meals': [
-                {'name': 'Moong Dal Cheela', 'calories': 240, 'allergens': ['wheat']},
-                {'name': 'Vegetable Pulao', 'calories': 400, 'allergens': []},
-                {'name': 'Cucumber', 'calories': 40, 'allergens': []},
-                {'name': 'Roti Sabzi', 'calories': 300, 'allergens': ['wheat']}
+                {'name': 'Moong Dal Cheela', 'calories': 240, 'protein': 12, 'carbs': 35, 'fats': 6, 'allergens': ['wheat']},
+                {'name': 'Vegetable Pulao', 'calories': 400, 'protein': 10, 'carbs': 65, 'fats': 12, 'allergens': []},
+                {'name': 'Cucumber', 'calories': 40, 'protein': 1, 'carbs': 6, 'fats': 0, 'allergens': []},
+                {'name': 'Roti Sabzi', 'calories': 300, 'protein': 8, 'carbs': 48, 'fats': 8, 'allergens': ['wheat']}
             ], 'total': 980},
             {'name': 'Day 4', 'meals': [
-                {'name': 'Besan Chilla', 'calories': 250, 'allergens': ['wheat']},
-                {'name': 'Rajma Chawal', 'calories': 430, 'allergens': []},
-                {'name': 'Sprouts', 'calories': 80, 'allergens': []},
-                {'name': 'Dal Fry with Rice', 'calories': 370, 'allergens': []}
+                {'name': 'Besan Chilla', 'calories': 250, 'protein': 14, 'carbs': 30, 'fats': 8, 'allergens': ['wheat']},
+                {'name': 'Rajma Chawal', 'calories': 430, 'protein': 16, 'carbs': 65, 'fats': 10, 'allergens': []},
+                {'name': 'Sprouts', 'calories': 80, 'protein': 5, 'carbs': 12, 'fats': 1, 'allergens': []},
+                {'name': 'Dal Fry with Rice', 'calories': 370, 'protein': 14, 'carbs': 55, 'fats': 10, 'allergens': []}
             ], 'total': 1130},
             {'name': 'Day 5', 'meals': [
-                {'name': 'Poha with Peanuts', 'calories': 280, 'allergens': ['peanuts']},
-                {'name': 'Chole Bhature (no curd)', 'calories': 450, 'allergens': ['wheat']},
-                {'name': 'Mixed Fruit', 'calories': 80, 'allergens': []},
-                {'name': 'Mixed Veg Curry with Roti', 'calories': 310, 'allergens': ['wheat']}
+                {'name': 'Poha with Peanuts', 'calories': 280, 'protein': 8, 'carbs': 45, 'fats': 8, 'allergens': ['peanuts']},
+                {'name': 'Chole Bhature (no curd)', 'calories': 450, 'protein': 14, 'carbs': 62, 'fats': 16, 'allergens': ['wheat']},
+                {'name': 'Mixed Fruit', 'calories': 80, 'protein': 1, 'carbs': 18, 'fats': 0, 'allergens': []},
+                {'name': 'Mixed Veg Curry with Roti', 'calories': 310, 'protein': 8, 'carbs': 48, 'fats': 10, 'allergens': ['wheat']}
             ], 'total': 1120}
         ]
     },
@@ -386,34 +386,34 @@ indian_meal_plans = {
         'name': 'Indian Pescatarian Plan',
         'days': [
             {'name': 'Day 1', 'meals': [
-                {'name': 'Poha', 'calories': 250, 'allergens': []},
-                {'name': 'Fish Curry with Rice', 'calories': 420, 'allergens': ['fish']},
-                {'name': 'Roasted Chana', 'calories': 120, 'allergens': []},
-                {'name': 'Dal Tadka with Roti', 'calories': 350, 'allergens': ['wheat']}
+                {'name': 'Poha', 'calories': 250, 'protein': 5, 'carbs': 48, 'fats': 3, 'allergens': []},
+                {'name': 'Fish Curry with Rice', 'calories': 420, 'protein': 28, 'carbs': 50, 'fats': 12, 'allergens': ['fish']},
+                {'name': 'Roasted Chana', 'calories': 120, 'protein': 6, 'carbs': 18, 'fats': 3, 'allergens': []},
+                {'name': 'Dal Tadka with Roti', 'calories': 350, 'protein': 12, 'carbs': 50, 'fats': 10, 'allergens': ['wheat']}
             ], 'total': 1140},
             {'name': 'Day 2', 'meals': [
-                {'name': 'Upma', 'calories': 240, 'allergens': []},
-                {'name': 'Prawns Curry with Rice', 'calories': 400, 'allergens': ['shellfish']},
-                {'name': 'Cucumber Salad', 'calories': 40, 'allergens': []},
-                {'name': 'Vegetable Khichdi', 'calories': 350, 'allergens': []}
+                {'name': 'Upma', 'calories': 240, 'protein': 7, 'carbs': 38, 'fats': 6, 'allergens': []},
+                {'name': 'Prawns Curry with Rice', 'calories': 400, 'protein': 30, 'carbs': 48, 'fats': 12, 'allergens': ['shellfish']},
+                {'name': 'Cucumber Salad', 'calories': 40, 'protein': 1, 'carbs': 6, 'fats': 0, 'allergens': []},
+                {'name': 'Vegetable Khichdi', 'calories': 350, 'protein': 12, 'carbs': 55, 'fats': 8, 'allergens': []}
             ], 'total': 1030},
             {'name': 'Day 3', 'meals': [
-                {'name': 'Idli Sambar', 'calories': 230, 'allergens': []},
-                {'name': 'Fish Tikka with Salad', 'calories': 380, 'allergens': ['fish']},
-                {'name': 'Sprouts', 'calories': 80, 'allergens': []},
-                {'name': 'Roti Sabzi', 'calories': 300, 'allergens': ['wheat']}
+                {'name': 'Idli Sambar', 'calories': 230, 'protein': 10, 'carbs': 40, 'fats': 4, 'allergens': []},
+                {'name': 'Fish Tikka with Salad', 'calories': 380, 'protein': 30, 'carbs': 18, 'fats': 20, 'allergens': ['fish']},
+                {'name': 'Sprouts', 'calories': 80, 'protein': 5, 'carbs': 12, 'fats': 1, 'allergens': []},
+                {'name': 'Roti Sabzi', 'calories': 300, 'protein': 8, 'carbs': 48, 'fats': 8, 'allergens': ['wheat']}
             ], 'total': 990},
             {'name': 'Day 4', 'meals': [
-                {'name': 'Poha', 'calories': 250, 'allergens': []},
-                {'name': 'Egg Curry with Rice', 'calories': 400, 'allergens': ['eggs']},
-                {'name': 'Buttermilk', 'calories': 60, 'allergens': ['dairy']},
-                {'name': 'Grilled Fish with Salad', 'calories': 350, 'allergens': ['fish']}
+                {'name': 'Poha', 'calories': 250, 'protein': 5, 'carbs': 48, 'fats': 3, 'allergens': []},
+                {'name': 'Egg Curry with Rice', 'calories': 400, 'protein': 22, 'carbs': 48, 'fats': 14, 'allergens': ['eggs']},
+                {'name': 'Buttermilk', 'calories': 60, 'protein': 3, 'carbs': 8, 'fats': 2, 'allergens': ['dairy']},
+                {'name': 'Grilled Fish with Salad', 'calories': 350, 'protein': 32, 'carbs': 15, 'fats': 18, 'allergens': ['fish']}
             ], 'total': 1060},
             {'name': 'Day 5', 'meals': [
-                {'name': 'Upma', 'calories': 240, 'allergens': []},
-                {'name': 'Fish Biryani', 'calories': 450, 'allergens': ['fish']},
-                {'name': 'Roasted Makhana', 'calories': 100, 'allergens': []},
-                {'name': 'Dal with Rice', 'calories': 360, 'allergens': []}
+                {'name': 'Upma', 'calories': 240, 'protein': 7, 'carbs': 38, 'fats': 6, 'allergens': []},
+                {'name': 'Fish Biryani', 'calories': 450, 'protein': 28, 'carbs': 55, 'fats': 16, 'allergens': ['fish']},
+                {'name': 'Roasted Makhana', 'calories': 100, 'protein': 4, 'carbs': 15, 'fats': 3, 'allergens': []},
+                {'name': 'Dal with Rice', 'calories': 360, 'protein': 14, 'carbs': 55, 'fats': 8, 'allergens': []}
             ], 'total': 1150}
         ]
     }
@@ -491,16 +491,39 @@ def generate_plan():
     if scale_factor > 1.3:
         scale_factor = 1.3
     
+    # Calculate macros
+    total_protein = 0
+    total_carbs = 0
+    total_fats = 0
+    
     for day in filtered_meal_plan['days']:
         day['total'] = round(day['total'] * scale_factor)
         for meal in day['meals']:
             meal['scaled_calories'] = round(meal['calories'] * scale_factor)
+            meal['protein'] = round(meal['protein'] * scale_factor)
+            meal['carbs'] = round(meal['carbs'] * scale_factor)
+            meal['fats'] = round(meal['fats'] * scale_factor)
+            total_protein += meal['protein']
+            total_carbs += meal['carbs']
+            total_fats += meal['fats']
+    
+    # Macro percentages (based on calories: protein/carbs=4cal, fats=9cal)
+    total_macro_cal = (total_protein * 4) + (total_carbs * 4) + (total_fats * 9)
+    macros = {
+        'protein': total_protein,
+        'carbs': total_carbs,
+        'fats': total_fats,
+        'protein_pct': 30 if total_macro_cal == 0 else round((total_protein * 4 / total_macro_cal) * 100),
+        'carbs_pct': 40 if total_macro_cal == 0 else round((total_carbs * 4 / total_macro_cal) * 100),
+        'fats_pct': 30 if total_macro_cal == 0 else round((total_fats * 9 / total_macro_cal) * 100)
+    }
     
     return render_template('result.html', 
                          name=data['name'],
                          metrics=metrics,
                          workout_plan=workout_plan,
                          meal_plan=filtered_meal_plan,
+                         macros=macros,
                          skipped_meals=skipped_meals,
                          allergens=data['allergens'])
 
@@ -511,7 +534,7 @@ def send_email():
     if not email or '@' not in email:
         return render_template('result.html', error="Invalid email address")
     
-    name = request.form.get('name', 'User')
+    name = request.form.get('name', "User")
     metrics = request.form.get('metrics', '')
     workout = request.form.get('workout', '')
     meal_plan = request.form.get('meal_plan', '')

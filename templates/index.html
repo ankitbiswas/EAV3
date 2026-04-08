@@ -3,103 +3,230 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FitPlan Pro - Personalized Fitness & Meal Planning</title>
+    <title>FitPlan Pro - Transform Your Fitness Journey</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        :root {
-            --primary: #6366f1;
-            --primary-dark: #4f46e5;
-            --secondary: #10b981;
-            --accent: #f59e0b;
-            --danger: #ef4444;
-            --dark: #1f2937;
-            --gray: #6b7280;
-            --white: #ffffff;
-            --gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
-        }
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 50%, #16213e 100%);
             min-height: 100vh;
-            padding: 20px;
-            color: var(--dark);
+            color: #ffffff;
+            overflow-x: hidden;
         }
-        .container { max-width: 1000px; margin: 0 auto; }
-        header { text-align: center; margin-bottom: 30px; }
+        .hero-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="%23666" stroke-width="0.5"/></svg>');
+            opacity: 0.05;
+            pointer-events: none;
+        }
+        .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; position: relative; z-index: 1; }
+        header { text-align: center; margin-bottom: 50px; }
+        .logo-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
         header h1 {
-            font-size: 2.5rem;
-            background: var(--gradient);
+            font-family: 'Roboto Slab', serif;
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #00d4ff 0%, #7b2ff7 50%, #ff006e 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            text-transform: uppercase;
+            letter-spacing: 3px;
             margin-bottom: 10px;
+            text-shadow: 0 0 30px rgba(123, 47, 247, 0.3);
         }
-        header p { color: var(--gray); font-size: 1.1rem; }
-        .input-section {
-            background: var(--white);
-            border-radius: 20px;
-            padding: 40px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        header p {
+            font-size: 1.2rem;
+            color: #a0a0b0;
+            font-weight: 400;
+            letter-spacing: 2px;
         }
-        .input-section h2 { color: var(--dark); margin-bottom: 30px; text-align: center; }
-        .form-group { margin-bottom: 20px; }
+        .progress-bar {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px 0;
+        }
+        .progress-step {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            border: 2px solid #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: #666;
+        }
+        .progress-step.active {
+            background: linear-gradient(135deg, #00d4ff, #7b2ff7);
+            border-color: #00d4ff;
+            color: white;
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+        }
+        .card {
+            background: linear-gradient(145deg, rgba(30, 30, 50, 0.9), rgba(20, 20, 40, 0.95));
+            border-radius: 24px;
+            padding: 50px;
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+        }
+        .card h2 {
+            font-family: 'Roboto Slab', serif;
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            text-align: center;
+            color: #fff;
+        }
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(0, 212, 255, 0.3);
+        }
+        .section-title span { font-size: 1.5rem; }
+        .section-title h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #00d4ff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
         .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        label { display: block; margin-bottom: 8px; font-weight: 600; color: var(--dark); }
+        .form-group { margin-bottom: 20px; }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: #b0b0c0;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
         input, select {
             width: 100%;
-            padding: 14px 16px;
-            border: 2px solid #e5e7eb;
+            padding: 16px 20px;
+            background: rgba(255,255,255,0.05);
+            border: 2px solid rgba(255,255,255,0.1);
             border-radius: 12px;
             font-size: 1rem;
-            transition: all 0.3s ease;
-            background: var(--white);
+            color: #fff;
+            transition: all 0.3s;
         }
         input:focus, select:focus {
             outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+            border-color: #00d4ff;
+            background: rgba(0, 212, 255, 0.1);
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
         }
+        input::placeholder { color: #666; }
+        select option { background: #1a1a2e; color: #fff; }
         .allergen-section {
-            background: #fef3c7;
-            border-radius: 16px;
-            padding: 20px;
-            margin-bottom: 20px;
-            border: 2px solid #f59e0b;
+            background: linear-gradient(145deg, rgba(255, 183, 77, 0.1), rgba(255, 138, 101, 0.1));
+            border-radius: 20px;
+            padding: 30px;
+            border: 2px solid rgba(255, 183, 77, 0.3);
         }
-        .allergen-section h3 { color: #92400e; margin-bottom: 15px; font-size: 1.1rem; }
-        .allergen-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
-        .allergen-checkbox { display: flex; align-items: center; gap: 8px; padding: 10px; background: white; border-radius: 8px; cursor: pointer; }
-        .allergen-checkbox input { width: auto; cursor: pointer; }
-        .allergen-checkbox span { font-size: 0.9rem; color: #92400e; }
+        .allergen-section h3 {
+            color: #ffb74d;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .allergen-section p { color: #888; font-size: 0.85rem; margin: 10px 0 20px; }
+        .allergen-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; }
+        .allergen-checkbox {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 15px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 1px solid transparent;
+        }
+        .allergen-checkbox:hover {
+            background: rgba(255, 183, 77, 0.2);
+            border-color: rgba(255, 183, 77, 0.5);
+        }
+        .allergen-checkbox input { width: 18px; height: 18px; accent-color: #ffb74d; cursor: pointer; }
+        .allergen-checkbox span { font-size: 0.85rem; color: #ddd; }
         .btn-primary {
             width: 100%;
-            padding: 16px;
-            background: var(--gradient);
-            color: var(--white);
+            padding: 20px;
+            background: linear-gradient(135deg, #00d4ff 0%, #7b2ff7 100%);
+            color: white;
             border: none;
-            border-radius: 12px;
-            font-size: 1.1rem;
-            font-weight: 600;
+            border-radius: 16px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
             cursor: pointer;
-            transition: all 0.3s ease;
-            margin-top: 10px;
+            transition: all 0.3s;
+            margin-top: 20px;
+            position: relative;
+            overflow: hidden;
         }
-        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3); }
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
+        .btn-primary:hover::before { left: 100%; }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.4);
+        }
         @media (max-width: 768px) {
             .form-row, .allergen-grid { grid-template-columns: 1fr; }
+            header h1 { font-size: 2rem; }
+            .card { padding: 30px 20px; }
         }
     </style>
 </head>
 <body>
+    <div class="hero-bg"></div>
     <div class="container">
         <header>
-            <h1>🏋️ FitPlan Pro</h1>
-            <p>Your Personalized Fitness & Nutrition Solution</p>
+            <div class="logo-icon">💪</div>
+            <h1>FitPlan Pro</h1>
+            <p>Transform Your Body • Fuel Your Goals</p>
+            <div class="progress-bar">
+                <div class="progress-step active">1</div>
+                <div class="progress-step">2</div>
+                <div class="progress-step">3</div>
+            </div>
         </header>
 
-        <section class="input-section">
-            <h2>Tell Us About Yourself</h2>
+        <div class="card">
+            <h2>🏃‍♂️ Start Your Transformation</h2>
             <form action="/generate_plan" method="POST">
+                <div class="section-title"><span>👤</span><h3>Personal Details</h3></div>
                 <div class="form-group">
                     <label for="name">Your Name</label>
                     <input type="text" id="name" name="name" placeholder="Enter your name" required>
@@ -132,59 +259,61 @@
                     </div>
                 </div>
 
+                <div class="section-title" style="margin-top: 40px;"><span>🎯</span><h3>Fitness Profile</h3></div>
+
                 <div class="form-group">
-                    <label for="activity_level">Current Activity Level</label>
+                    <label for="activity_level">Activity Level</label>
                     <select id="activity_level" name="activity_level" required>
-                        <option value="">Select your activity level</option>
-                        <option value="sedentary">Sedentary (little or no exercise)</option>
-                        <option value="light">Lightly Active (1-3 days/week)</option>
-                        <option value="moderate">Moderately Active (3-5 days/week)</option>
-                        <option value="active">Very Active (6-7 days/week)</option>
-                        <option value="extremely">Extremely Active (athlete)</option>
+                        <option value="">Select activity level</option>
+                        <option value="sedentary">😴 Sedentary</option>
+                        <option value="light">🚶 Lightly Active</option>
+                        <option value="moderate">🏃 Moderately Active</option>
+                        <option value="active">💪 Very Active</option>
+                        <option value="extremely">🔥 Extremely Active (Athlete)</option>
                     </select>
                 </div>
 
                 <div class="form-group">
-                    <label for="fitness_goal">Primary Fitness Goal</label>
+                    <label for="fitness_goal">Primary Goal</label>
                     <select id="fitness_goal" name="fitness_goal" required>
                         <option value="">Select your goal</option>
-                        <option value="weight_loss">Lose Weight</option>
-                        <option value="muscle_gain">Build Muscle</option>
-                        <option value="endurance">Improve Endurance</option>
-                        <option value="flexibility">Improve Flexibility</option>
-                        <option value="general">General Health & Fitness</option>
+                        <option value="weight_loss">🔥 Lose Weight</option>
+                        <option value="muscle_gain">💪 Build Muscle</option>
+                        <option value="endurance">⚡ Improve Endurance</option>
+                        <option value="flexibility">🧘 Improve Flexibility</option>
+                        <option value="general">🎯 General Health</option>
                     </select>
                 </div>
 
                 <div class="form-group">
                     <label for="diet_preference">Diet Preference</label>
                     <select id="diet_preference" name="diet_preference" required>
-                        <option value="">Select diet preference</option>
-                        <option value="non_veg">Non-Vegetarian</option>
-                        <option value="vegetarian">Vegetarian</option>
-                        <option value="vegan">Vegan</option>
-                        <option value="pescatarian">Pescatarian</option>
+                        <option value="">Select diet</option>
+                        <option value="non_veg">🍗 Non-Vegetarian</option>
+                        <option value="vegetarian">🥬 Vegetarian</option>
+                        <option value="vegan">🌱 Vegan</option>
+                        <option value="pescatarian">🐟 Pescatarian</option>
                     </select>
                 </div>
 
-                <div class="allergen-section">
-                    <h3>⚠️ Any Allergies? (Select all that apply)</h3>
-                    <p style="color: #92400e; margin-bottom: 15px; font-size: 0.9rem;">We'll customize your meal plan to avoid these ingredients</p>
+                <div class="allergen-section" style="margin-top: 30px;">
+                    <h3>⚠️ Allergy Check</h3>
+                    <p>Select any allergies - we'll filter meals accordingly</p>
                     <div class="allergen-grid">
-                        <label class="allergen-checkbox"><input type="checkbox" name="allergens" value="peanuts"><span>Peanuts</span></label>
-                        <label class="allergen-checkbox"><input type="checkbox" name="allergens" value="tree_nuts"><span>Tree Nuts</span></label>
-                        <label class="allergen-checkbox"><input type="checkbox" name="allergens" value="dairy"><span>Milk/Dairy</span></label>
-                        <label class="allergen-checkbox"><input type="checkbox" name="allergens" value="eggs"><span>Eggs</span></label>
-                        <label class="allergen-checkbox"><input type="checkbox" name="allergens" value="wheat"><span>Wheat/Gluten</span></label>
-                        <label class="allergen-checkbox"><input type="checkbox" name="allergens" value="soy"><span>Soy</span></label>
-                        <label class="allergen-checkbox"><input type="checkbox" name="allergens" value="fish"><span>Fish</span></label>
-                        <label class="allergen-checkbox"><input type="checkbox" name="allergens" value="shellfish"><span>Shellfish</span></label>
+                        <label class="allergen-checkbox"><input type="checkbox" name="allergens" value="peanuts"><span>🥜 Peanuts</span></label>
+                        <label class="allergen-checkbox"><input type="checkbox" name="allergens" value="tree_nuts"><span>🌰 Tree Nuts</span></label>
+                        <label class="allergen-checkbox"><input type="checkbox" name="allergens" value="dairy"><span>🥛 Dairy</span></label>
+                        <label class="allergen-checkbox"><input type="checkbox" name="allergens" value="eggs"><span>🥚 Eggs</span></label>
+                        <label class="allergen-checkbox"><input type="checkbox" name="allergens" value="wheat"><span>🌾 Wheat/Gluten</span></label>
+                        <label class="allergen-checkbox"><input type="checkbox" name="allergens" value="soy"><span>🫘 Soy</span></label>
+                        <label class="allergen-checkbox"><input type="checkbox" name="allergens" value="fish"><span>🐟 Fish</span></label>
+                        <label class="allergen-checkbox"><input type="checkbox" name="allergens" value="shellfish"><span>🦐 Shellfish</span></label>
                     </div>
                 </div>
 
-                <button type="submit" class="btn-primary">Generate My Plan</button>
+                <button type="submit" class="btn-primary">🔥 Generate My Plan</button>
             </form>
-        </section>
+        </div>
     </div>
 </body>
 </html>

@@ -3,160 +3,138 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your FitPlan - Results</title>
+    <title>FitPlan Pro - Your Results</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 50%, #16213e 100%);
             min-height: 100vh;
-            padding: 20px;
-            color: #1f2937;
+            color: #ffffff;
         }
-        .container { max-width: 1000px; margin: 0 auto; }
-        header { text-align: center; margin-bottom: 30px; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+        header { text-align: center; margin-bottom: 50px; }
         header h1 {
+            font-family: 'Roboto Slab', serif;
             font-size: 2.5rem;
-            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            font-weight: 800;
+            background: linear-gradient(135deg, #00d4ff 0%, #7b2ff7 50%, #ff006e 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 10px;
         }
-        header p { color: #6b7280; font-size: 1.1rem; }
-        .section {
-            background: #ffffff;
-            border-radius: 20px;
+        header p { color: #a0a0b0; font-size: 1.1rem; margin-top: 10px; }
+        .card {
+            background: linear-gradient(145deg, rgba(30, 30, 50, 0.95), rgba(20, 20, 40, 0.98));
+            border-radius: 24px;
             padding: 40px;
             margin-bottom: 30px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
         }
-        .section h2 { color: #1f2937; margin-bottom: 20px; text-align: center; }
+        .card h2 {
+            font-family: 'Roboto Slab', serif;
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
         .metrics-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
         }
         .metric-card {
-            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(123, 47, 247, 0.1));
             padding: 20px;
             border-radius: 16px;
             text-align: center;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            transition: transform 0.3s;
         }
-        .metric-card .label { color: #6b7280; font-size: 0.9rem; margin-bottom: 8px; }
-        .metric-card .value { font-size: 1.8rem; font-weight: 700; color: #6366f1; }
-        .metric-card .unit { font-size: 0.9rem; color: #6b7280; }
+        .metric-card:hover { transform: translateY(-5px); }
+        .metric-card .label { color: #888; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+        .metric-card .value { font-size: 2rem; font-weight: 800; color: #00d4ff; }
+        .metric-card .unit { color: #666; font-size: 0.85rem; }
+        .macro-summary {
+            background: linear-gradient(135deg, rgba(255, 107, 107, 0.1), rgba(255, 183, 77, 0.1));
+            border-radius: 20px;
+            padding: 25px;
+            margin-top: 20px;
+            border: 2px solid rgba(255, 107, 107, 0.3);
+        }
+        .macro-summary h3 { color: #ff6b6b; margin-bottom: 15px; display: flex; align-items: center; gap: 8px; }
+        .macro-bars { display: flex; gap: 20px; flex-wrap: wrap; }
+        .macro-bar { flex: 1; min-width: 150px; }
+        .macro-bar label { display: flex; justify-content: space-between; color: #ccc; font-size: 0.85rem; margin-bottom: 5px; }
+        .macro-bar .bar-bg { height: 8px; background: rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden; }
+        .macro-bar .bar-fill { height: 100%; border-radius: 4px; transition: width 1s; }
+        .protein .bar-fill { background: linear-gradient(90deg, #ff6b6b, #ff8e8e); }
+        .carbs .bar-fill { background: linear-gradient(90deg, #ffd93d, #ffe066); }
+        .fats .bar-fill { background: linear-gradient(90deg, #6bcb77, #8ed99a); }
         .email-section {
-            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-            border-radius: 16px;
+            background: linear-gradient(135deg, rgba(255, 183, 77, 0.15), rgba(255, 138, 101, 0.15));
+            border-radius: 20px;
             padding: 30px;
-            margin-bottom: 30px;
+            border: 2px solid rgba(255, 183, 77, 0.4);
             text-align: center;
-            border: 2px solid #f59e0b;
         }
-        .email-section h3 { color: #92400e; margin-bottom: 15px; }
-        .email-form { display: flex; gap: 15px; max-width: 500px; margin: 0 auto 10px; }
-        .email-form input {
-            flex: 1;
-            padding: 14px 16px;
-            border: 2px solid #f59e0b;
-            border-radius: 12px;
-            font-size: 1rem;
-        }
-        .btn-email {
-            padding: 14px 24px;
-            background: #f59e0b;
-            color: white;
-            border: none;
-            border-radius: 12px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            white-space: nowrap;
-        }
-        .btn-email:hover { background: #d97706; }
-        .email-note { color: #92400e; font-size: 0.9rem; }
-        .allergy-warning {
-            background: #fef2f2;
-            border: 2px solid #ef4444;
-            border-radius: 12px;
-            padding: 15px;
-            margin-bottom: 20px;
-            color: #991b1b;
-        }
-        .days-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .email-section h3 { color: #ffb74d; margin-bottom: 15px; }
+        .email-form { display: flex; gap: 15px; max-width: 500px; margin: 0 auto; }
+        .email-form input { flex: 1; padding: 14px 16px; background: rgba(255,255,255,0.1); border: 2px solid rgba(255, 183, 77, 0.5); border-radius: 12px; color: #fff; font-size: 1rem; }
+        .btn-email { padding: 14px 24px; background: linear-gradient(135deg, #ffb74d, #ff9800); color: #000; border: none; border-radius: 12px; font-weight: 700; cursor: pointer; white-space: nowrap; }
+        .btn-email:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(255, 183, 77, 0.4); }
+        .days-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
         .day-card {
-            background: #f8fafc;
-            border-radius: 16px;
+            background: rgba(30, 30, 50, 0.8);
+            border-radius: 20px;
             padding: 25px;
-            border-left: 4px solid #6366f1;
+            border-left: 4px solid;
+            transition: transform 0.3s;
         }
-        .meal-card {
-            background: #f8fafc;
-            border-radius: 16px;
-            padding: 25px;
-            border-left: 4px solid #10b981;
-        }
-        .day-card h3, .meal-card h3 { margin-bottom: 15px; font-size: 1.2rem; }
-        .day-card h3 { color: #6366f1; }
+        .day-card:hover { transform: translateX(5px); }
+        .workout-card { border-left-color: #00d4ff; }
+        .meal-card { border-left-color: #10b981; }
+        .day-card h3 { font-size: 1.1rem; margin-bottom: 5px; }
+        .workout-card h3 { color: #00d4ff; }
         .meal-card h3 { color: #10b981; }
-        .day-card .focus { color: #6b7280; font-size: 0.9rem; margin-bottom: 15px; }
+        .day-card .subtitle { color: #666; font-size: 0.85rem; margin-bottom: 15px; }
         .day-card ul { list-style: none; }
         .day-card li {
-            padding: 10px 0;
-            border-bottom: 1px solid #e5e7eb;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
             display: flex;
             justify-content: space-between;
             align-items: center;
             gap: 10px;
         }
         .day-card li:last-child { border-bottom: none; }
-        .day-card .ex-name { flex: 1; }
-        .day-card .sets-reps { color: #6b7280; font-size: 0.85rem; white-space: nowrap; }
-        .video-link {
-            display: inline-block;
-            padding: 4px 10px;
-            background: #6366f1;
-            color: white;
-            text-decoration: none;
-            border-radius: 12px;
-            font-size: 0.75rem;
-            white-space: nowrap;
-        }
-        .video-link:hover { background: #4f46e5; }
-        .meal-item { padding: 12px 0; border-bottom: 1px solid #e5e7eb; }
+        .ex-name { flex: 1; font-size: 0.95rem; }
+        .sets-reps { color: #666; font-size: 0.8rem; white-space: nowrap; }
+        .video-link { padding: 4px 12px; background: linear-gradient(135deg, #00d4ff, #7b2ff7); color: #fff; text-decoration: none; border-radius: 20px; font-size: 0.75rem; white-space: nowrap; transition: all 0.3s; }
+        .video-link:hover { transform: scale(1.05); box-shadow: 0 5px 15px rgba(0, 212, 255, 0.4); }
+        .meal-item { padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
         .meal-item:last-child { border-bottom: none; }
-        .meal-item .meal-row { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
-        .meal-item .name { font-weight: 600; flex: 1; }
-        .meal-item .cal { color: #6b7280; font-size: 0.85rem; white-space: nowrap; }
-        .recipe-link {
-            display: inline-block;
-            padding: 4px 10px;
-            background: #10b981;
-            color: white;
-            text-decoration: none;
-            border-radius: 12px;
-            font-size: 0.75rem;
-            white-space: nowrap;
-        }
-        .recipe-link:hover { background: #059669; }
-        .btn-back {
-            display: block;
-            width: 100%;
-            padding: 14px;
-            background: #1f2937;
-            color: white;
-            border: none;
-            border-radius: 12px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            text-align: center;
-            text-decoration: none;
-        }
-        .btn-back:hover { background: #374151; }
+        .meal-row { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; }
+        .meal-name { font-weight: 600; font-size: 0.95rem; }
+        .meal-info { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+        .meal-cal { color: #888; font-size: 0.85rem; }
+        .recipe-link { padding: 4px 12px; background: linear-gradient(135deg, #10b981, #059669); color: #fff; text-decoration: none; border-radius: 20px; font-size: 0.75rem; }
+        .recipe-link:hover { transform: scale(1.05); box-shadow: 0 5px 15px rgba(16, 185, 129, 0.4); }
+        .macro-pills { display: flex; gap: 8px; margin-top: 8px; }
+        .macro-pill { font-size: 0.7rem; padding: 3px 8px; border-radius: 10px; color: #fff; }
+        .macro-pill.protein { background: rgba(255, 107, 107, 0.3); }
+        .macro-pill.carbs { background: rgba(255, 217, 61, 0.3); }
+        .macro-pill.fats { background: rgba(107, 203, 119, 0.3); }
+        .allergy-warning { background: rgba(239, 68, 68, 0.1); border: 2px solid rgba(239, 68, 68, 0.5); border-radius: 16px; padding: 20px; margin-bottom: 30px; }
+        .allergy-warning h4 { color: #ff6b6b; margin-bottom: 10px; }
+        .allergy-warning li { color: #ff8e8e; margin-left: 20px; }
+        .btn-back { display: block; width: 100%; padding: 16px; background: linear-gradient(135deg, #333, #222); color: #fff; border: none; border-radius: 16px; font-size: 1rem; font-weight: 700; text-align: center; text-decoration: none; cursor: pointer; transition: all 0.3s; }
+        .btn-back:hover { background: linear-gradient(135deg, #444, #333); transform: translateY(-2px); }
         @media (max-width: 768px) {
-            .metrics-grid, .days-grid { grid-template-columns: 1fr; }
+            .metrics-grid, .days-grid, .macro-bars { grid-template-columns: 1fr; }
             .email-form { flex-direction: column; }
         }
     </style>
@@ -164,12 +142,12 @@
 <body>
     <div class="container">
         <header>
-            <h1>🏋️ Your FitPlan Results</h1>
-            <p>Personalized for {{ name }}</p>
+            <h1>🔥 Your FitPlan Results</h1>
+            <p>Ready for {{ name }}'s transformation journey!</p>
         </header>
 
-        <section class="section">
-            <h2>📊 Your Health Metrics</h2>
+        <div class="card">
+            <h2>📊 Health Metrics</h2>
             <div class="metrics-grid">
                 <div class="metric-card">
                     <div class="label">BMI</div>
@@ -182,92 +160,110 @@
                     <div class="unit">{{ metrics.weight_change_msg }}</div>
                 </div>
                 <div class="metric-card">
-                    <div class="label">TDEE</div>
-                    <div class="value">{{ metrics.tdee }}</div>
-                    <div class="unit">Maintenance calories</div>
-                </div>
-                <div class="metric-card">
                     <div class="label">BMR</div>
                     <div class="value">{{ metrics.bmr }}</div>
-                    <div class="unit">At rest calories</div>
+                    <div class="unit">At rest</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">TDEE</div>
+                    <div class="value">{{ metrics.tdee }}</div>
+                    <div class="unit">Maintenance</div>
                 </div>
             </div>
-        </section>
+        </div>
 
-        <section class="email-section">
-            <h3>📧 Send Your Plan via Email</h3>
+        <div class="email-section">
+            <h3>📧 Send Plan to Email</h3>
             <form action="/send_email" method="POST" class="email-form">
-                <input type="email" name="email" placeholder="Enter your email address" required>
+                <input type="email" name="email" placeholder="Enter email address" required>
                 <input type="hidden" name="name" value="{{ name }}">
                 <input type="hidden" name="metrics" value="BMI: {{ metrics.bmi }} ({{ metrics.bmi_category }}) | Calories: {{ metrics.calorie_target }} ({{ metrics.weight_change_msg }}) | BMR: {{ metrics.bmr }} | TDEE: {{ metrics.tdee }}">
                 <input type="hidden" name="workout" value="{{ workout_plan.title }}">
                 <input type="hidden" name="meal_plan" value="{{ meal_plan.name }}">
-                <button type="submit" class="btn-email">📧 Send Plan</button>
+                <button type="submit" class="btn-email">🚀 Send Plan</button>
             </form>
-            <p class="email-note">Opens your email app with your complete fitness plan!</p>
-        </section>
+        </div>
 
         {% if skipped_meals %}
-        <section class="section">
-            <div class="allergy-warning">
-                <h4>⚠️ Meals Skipped Due to Your Allergies:</h4>
-                <ul>
-                {% for meal in skipped_meals %}
-                    <li>{{ meal }}</li>
-                {% endfor %}
-                </ul>
-            </div>
-        </section>
+        <div class="allergy-warning">
+            <h4>⚠️ Meals Excluded (Due to Allergies):</h4>
+            <ul>
+            {% for meal in skipped_meals %}
+                <li>{{ meal }}</li>
+            {% endfor %}
+            </ul>
+        </div>
         {% endif %}
 
-        <section class="section">
+        <div class="card">
             <h2>🏋️ 5-Day Workout Routine</h2>
-            <p style="text-align: center; color: #6b7280; margin-bottom: 25px;">
-                Specially designed for {{ workout_plan.title }}
-            </p>
+            <p style="color: #888; margin-bottom: 25px;">{{ workout_plan.title }}</p>
             <div class="days-grid">
                 {% for day in workout_plan.days %}
-                <div class="day-card">
+                <div class="day-card workout-card">
                     <h3>{{ day.name }}</h3>
-                    <div class="focus">{{ day.focus }}</div>
+                    <div class="subtitle">{{ day.focus }}</div>
                     <ul>
                         {% for ex in day.exercises %}
                         <li>
                             <span class="ex-name">{{ ex.name }}</span>
                             <span class="sets-reps">{{ ex.sets }} x {{ ex.reps }}</span>
-                            <a href="https://www.youtube.com/results?search_query={{ ex.name | urlencode }}+exercise+tutorial" target="_blank" class="video-link">▶ Watch</a>
+                            <a href="https://www.youtube.com/results?search_query={{ ex.name | urlencode }}+exercise" target="_blank" class="video-link">▶ Video</a>
                         </li>
                         {% endfor %}
                     </ul>
                 </div>
                 {% endfor %}
             </div>
-        </section>
+        </div>
 
-        <section class="section">
+        <div class="card">
             <h2>🥗 5-Day Meal Plan</h2>
-            <p style="text-align: center; color: #6b7280; margin-bottom: 25px;">
-                {{ meal_plan.name }} - ~{{ metrics.calorie_target }} calories/day
-            </p>
-            <div class="days-grid">
+            <p style="color: #888; margin-bottom: 25px;">{{ meal_plan.name }} - ~{{ metrics.calorie_target }} cal/day</p>
+            <div class="macro-summary">
+                <h3>📈 Daily Macro Breakdown</h3>
+                <div class="macro-bars">
+                    <div class="macro-bar protein">
+                        <label><span>Protein</span><span>{{ macros.protein }}g</span></label>
+                        <div class="bar-bg"><div class="bar-fill" style="width: {{ macros.protein_pct }}%"></div></div>
+                    </div>
+                    <div class="macro-bar carbs">
+                        <label><span>Carbs</span><span>{{ macros.carbs }}g</span></label>
+                        <div class="bar-bg"><div class="bar-fill" style="width: {{ macros.carbs_pct }}%"></div></div>
+                    </div>
+                    <div class="macro-bar fats">
+                        <label><span>Fats</span><span>{{ macros.fats }}g</span></label>
+                        <div class="bar-bg"><div class="bar-fill" style="width: {{ macros.fats_pct }}%"></div></div>
+                    </div>
+                </div>
+            </div>
+            <div class="days-grid" style="margin-top: 25px;">
                 {% for day in meal_plan.days %}
-                <div class="meal-card">
-                    <h3>{{ day.name }} - {{ day.total }} cal</h3>
+                <div class="day-card meal-card">
+                    <h3>{{ day.name }}</h3>
+                    <div class="subtitle">~{{ day.total }} calories</div>
                     {% for meal in day.meals %}
                     <div class="meal-item">
                         <div class="meal-row">
-                            <span class="name">{{ meal.name }}</span>
-                            <span class="cal">{{ meal.scaled_calories }} cal</span>
-                            <a href="https://www.youtube.com/results?search_query={{ meal.name | urlencode }}+recipe+indian" target="_blank" class="recipe-link">📺 Recipe</a>
+                            <span class="meal-name">{{ meal.name }}</span>
+                            <div class="meal-info">
+                                <span class="meal-cal">{{ meal.scaled_calories }} cal</span>
+                                <a href="https://www.youtube.com/results?search_query={{ meal.name | urlencode }}+recipe" target="_blank" class="recipe-link">📺 Recipe</a>
+                            </div>
+                        </div>
+                        <div class="macro-pills">
+                            <span class="macro-pill protein">P: {{ meal.protein }}g</span>
+                            <span class="macro-pill carbs">C: {{ meal.carbs }}g</span>
+                            <span class="macro-pill fats">F: {{ meal.fats }}g</span>
                         </div>
                     </div>
                     {% endfor %}
                 </div>
                 {% endfor %}
             </div>
-        </section>
+        </div>
 
-        <a href="/" class="btn-back">Create New Plan</a>
+        <a href="/" class="btn-back">🔄 Create New Plan</a>
     </div>
 </body>
 </html>
