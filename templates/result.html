@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your FitPlan - Results</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #1f2937;
+        }
+        .container { max-width: 1000px; margin: 0 auto; }
+        header { text-align: center; margin-bottom: 30px; }
+        header h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+        header p { color: #6b7280; font-size: 1.1rem; }
+        .section {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+        .section h2 { color: #1f2937; margin-bottom: 20px; text-align: center; }
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .metric-card {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            padding: 20px;
+            border-radius: 16px;
+            text-align: center;
+        }
+        .metric-card .label { color: #6b7280; font-size: 0.9rem; margin-bottom: 8px; }
+        .metric-card .value { font-size: 1.8rem; font-weight: 700; color: #6366f1; }
+        .metric-card .unit { font-size: 0.9rem; color: #6b7280; }
+        .email-section {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 30px;
+            text-align: center;
+            border: 2px solid #f59e0b;
+        }
+        .email-section h3 { color: #92400e; margin-bottom: 15px; }
+        .email-form { display: flex; gap: 15px; max-width: 500px; margin: 0 auto 10px; }
+        .email-form input {
+            flex: 1;
+            padding: 14px 16px;
+            border: 2px solid #f59e0b;
+            border-radius: 12px;
+            font-size: 1rem;
+        }
+        .btn-email {
+            padding: 14px 24px;
+            background: #f59e0b;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+        .btn-email:hover { background: #d97706; }
+        .email-note { color: #92400e; font-size: 0.9rem; }
+        .allergy-warning {
+            background: #fef2f2;
+            border: 2px solid #ef4444;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 20px;
+            color: #991b1b;
+        }
+        .days-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .day-card {
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 25px;
+            border-left: 4px solid #6366f1;
+        }
+        .meal-card {
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 25px;
+            border-left: 4px solid #10b981;
+        }
+        .day-card h3, .meal-card h3 { margin-bottom: 15px; font-size: 1.2rem; }
+        .day-card h3 { color: #6366f1; }
+        .meal-card h3 { color: #10b981; }
+        .day-card .focus { color: #6b7280; font-size: 0.9rem; margin-bottom: 15px; }
+        .day-card ul { list-style: none; }
+        .day-card li {
+            padding: 10px 0;
+            border-bottom: 1px solid #e5e7eb;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+        }
+        .day-card li:last-child { border-bottom: none; }
+        .day-card .ex-name { flex: 1; }
+        .day-card .sets-reps { color: #6b7280; font-size: 0.85rem; white-space: nowrap; }
+        .video-link {
+            display: inline-block;
+            padding: 4px 10px;
+            background: #6366f1;
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            white-space: nowrap;
+        }
+        .video-link:hover { background: #4f46e5; }
+        .meal-item { padding: 12px 0; border-bottom: 1px solid #e5e7eb; }
+        .meal-item:last-child { border-bottom: none; }
+        .meal-item .meal-row { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+        .meal-item .name { font-weight: 600; flex: 1; }
+        .meal-item .cal { color: #6b7280; font-size: 0.85rem; white-space: nowrap; }
+        .recipe-link {
+            display: inline-block;
+            padding: 4px 10px;
+            background: #10b981;
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            white-space: nowrap;
+        }
+        .recipe-link:hover { background: #059669; }
+        .btn-back {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            background: #1f2937;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+        }
+        .btn-back:hover { background: #374151; }
+        @media (max-width: 768px) {
+            .metrics-grid, .days-grid { grid-template-columns: 1fr; }
+            .email-form { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🏋️ Your FitPlan Results</h1>
+            <p>Personalized for {{ name }}</p>
+        </header>
+
+        <section class="section">
+            <h2>📊 Your Health Metrics</h2>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="label">BMI</div>
+                    <div class="value" style="color: {{ metrics.bmi_color }}">{{ metrics.bmi }}</div>
+                    <div class="unit">{{ metrics.bmi_category }}</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">Daily Calories</div>
+                    <div class="value">{{ metrics.calorie_target }}</div>
+                    <div class="unit">{{ metrics.weight_change_msg }}</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">TDEE</div>
+                    <div class="value">{{ metrics.tdee }}</div>
+                    <div class="unit">Maintenance calories</div>
+                </div>
+                <div class="metric-card">
+                    <div class="label">BMR</div>
+                    <div class="value">{{ metrics.bmr }}</div>
+                    <div class="unit">At rest calories</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="email-section">
+            <h3>📧 Send Your Plan via Email</h3>
+            <form action="/send_email" method="POST" class="email-form">
+                <input type="email" name="email" placeholder="Enter your email address" required>
+                <input type="hidden" name="name" value="{{ name }}">
+                <input type="hidden" name="metrics" value="BMI: {{ metrics.bmi }} ({{ metrics.bmi_category }}) | Calories: {{ metrics.calorie_target }} ({{ metrics.weight_change_msg }}) | BMR: {{ metrics.bmr }} | TDEE: {{ metrics.tdee }}">
+                <input type="hidden" name="workout" value="{{ workout_plan.title }}">
+                <input type="hidden" name="meal_plan" value="{{ meal_plan.name }}">
+                <button type="submit" class="btn-email">📧 Send Plan</button>
+            </form>
+            <p class="email-note">Opens your email app with your complete fitness plan!</p>
+        </section>
+
+        {% if skipped_meals %}
+        <section class="section">
+            <div class="allergy-warning">
+                <h4>⚠️ Meals Skipped Due to Your Allergies:</h4>
+                <ul>
+                {% for meal in skipped_meals %}
+                    <li>{{ meal }}</li>
+                {% endfor %}
+                </ul>
+            </div>
+        </section>
+        {% endif %}
+
+        <section class="section">
+            <h2>🏋️ 5-Day Workout Routine</h2>
+            <p style="text-align: center; color: #6b7280; margin-bottom: 25px;">
+                Specially designed for {{ workout_plan.title }}
+            </p>
+            <div class="days-grid">
+                {% for day in workout_plan.days %}
+                <div class="day-card">
+                    <h3>{{ day.name }}</h3>
+                    <div class="focus">{{ day.focus }}</div>
+                    <ul>
+                        {% for ex in day.exercises %}
+                        <li>
+                            <span class="ex-name">{{ ex.name }}</span>
+                            <span class="sets-reps">{{ ex.sets }} x {{ ex.reps }}</span>
+                            <a href="https://www.youtube.com/results?search_query={{ ex.name | urlencode }}+exercise+tutorial" target="_blank" class="video-link">▶ Watch</a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>🥗 5-Day Meal Plan</h2>
+            <p style="text-align: center; color: #6b7280; margin-bottom: 25px;">
+                {{ meal_plan.name }} - ~{{ metrics.calorie_target }} calories/day
+            </p>
+            <div class="days-grid">
+                {% for day in meal_plan.days %}
+                <div class="meal-card">
+                    <h3>{{ day.name }} - {{ day.total }} cal</h3>
+                    {% for meal in day.meals %}
+                    <div class="meal-item">
+                        <div class="meal-row">
+                            <span class="name">{{ meal.name }}</span>
+                            <span class="cal">{{ meal.scaled_calories }} cal</span>
+                            <a href="https://www.youtube.com/results?search_query={{ meal.name | urlencode }}+recipe+indian" target="_blank" class="recipe-link">📺 Recipe</a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+
+        <a href="/" class="btn-back">Create New Plan</a>
+    </div>
+</body>
+</html>
