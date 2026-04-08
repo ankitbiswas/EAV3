@@ -4,6 +4,8 @@
 
 FitPlan Pro is a comprehensive web application that generates personalized fitness and meal plans based on user-provided health parameters. The application uses a modern Flask (Python) backend with responsive HTML/CSS frontend.
 
+Video Recording Link - https://youtu.be/V6l-3WFFaWc
+
 ## Features
 
 ### 1. Health Metrics Calculator
